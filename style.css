@@ -22,6 +22,41 @@ body {
     top: 10px;
     z-index: -1;
 }
+.searchBlock {
+    position: relative; 
+}
+.searchBlock input {
+    padding: 5px 10px;
+    line-height: 1.3rem;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    padding-right: 70px;
+}
+button {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    stroke: lightgray;
+    transition: all 0.3s ease-in-out;
+}
+button:hover {
+    scale: 1.1;
+    stroke: black;
+}
+.searchBtn {
+    right: 0px;
+    top: 0px;
+}
+.cleareBtn {
+    top: 0px;
+    right: 30px;
+}
 .galleryContainer {
     margin: 50px 20px;
     display: grid;
@@ -38,35 +73,6 @@ body {
 }
 .image:hover {
     transform: scale(125%);
-}
-.searchBlock {
-    position: relative; 
-}
-.searchBlock input {
-    padding: 5px 10px;
-    line-height: 1.3rem;
-    border: 1px solid lightgray;
-    border-radius: 10px;
-    padding-right: 60                                                                                                                                       px;
-}
-.searchBlock button {
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: none;
-    background-color: inherit;
-    cursor: pointer;
-    stroke: lightgray;
-    transition: all 0.3s ease-in-out;
-}
-.searchBlock button:hover {
-    scale: 1.1;
-    stroke: black;
 }
 .footer {
     display: flex;
