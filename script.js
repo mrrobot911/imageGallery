@@ -1,13 +1,15 @@
+let spinner = false;
 let page = 1;
 let render = false;
-// const apiKey = 'Ps0UKzTKZQbNZI8fCPltSBO5ct9U-svvBmxzQX7BDZ4';
-const apiKey = 'ai8aJK-efo0saOGfga1MIjYxIuEhNg7DrOiftfKK3bg';
+const apiKey = 'Ps0UKzTKZQbNZI8fCPltSBO5ct9U-svvBmxzQX7BDZ4';
+// const apiKey = 'ai8aJK-efo0saOGfga1MIjYxIuEhNg7DrOiftfKK3bg';
 
+const p = document.createElement('p');
 const body = document.querySelector('body');
 const header = document.createElement('section');
 header.className = 'header';
 const elName = document.createElement('h2');
-elName.innerHTML = 'My gallery';
+elName.innerHTML = 'Image gallery';
 const searchBlock = document.createElement('form');
 searchBlock.className = 'searchBlock';
 const input = document.createElement('input');
@@ -63,19 +65,42 @@ rsImg.alt = 'RS School';
 rsImg.className = 'rs';
 rs.append(rsImg);
 footer.append(author, year, rs);
+const spinnerEl = document.createElement('div');
+spinnerEl.className = 'spinner';
+spinnerEl.innerHTML = ` <div class="sk-cube sk-cube1"></div>
+                        <div class="sk-cube sk-cube2"></div>
+                        <div class="sk-cube sk-cube3"></div>
+                        <div class="sk-cube sk-cube4"></div>
+                        <div class="sk-cube sk-cube5"></div>
+                        <div class="sk-cube sk-cube6"></div>
+                        <div class="sk-cube sk-cube7"></div>
+                        <div class="sk-cube sk-cube8"></div>
+                        <div class="sk-cube sk-cube9"></div>`
 
 const fetchRandom =  async() => {
+    gallery.append(spinnerEl);
     const url = `https://api.unsplash.com/photos/?client_id=${apiKey}`;
-    const response = await fetch(url);
-    const result = await response.json();
-    showData(result);
+    try {
+        const response = await fetch(url);
+        const result = await response.json();
+        showData(result);
+    } catch {
+        p.innerText = 'что-то пошло не так';
+        gallery.replaceChildren(p);
+    }
 }
 const fetchData = async(data) =>{
+    gallery.append(spinnerEl);
     const url = `https://api.unsplash.com/search/photos?page=${page}&query=${data}&client_id=${apiKey}`;
-    const response = await fetch(url);
-    const result = await response.json();
-    render = true;
-    showData(result.results) 
+    try {
+        const response = await fetch(url);
+        const result = await response.json();
+        render = true;
+        showData(result.results)
+    } catch {
+        p.innerText = 'что-то пошло не так';
+        gallery.replaceChildren(p);
+    }
 }
 function showData(data){
     const arr = []
@@ -89,6 +114,11 @@ function showData(data){
         imageContainer.append(image);
         arr.push(imageContainer);
     });
+    gallery.lastChild.remove();
+    if (arr.length < 1) {
+        p.innerText = 'картинок нет';
+        arr.push(p);
+    }
     gallery.replaceChildren(...arr);
 }
 fetchRandom();
