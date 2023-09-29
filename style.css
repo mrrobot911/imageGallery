@@ -32,7 +32,8 @@ body {
     border-radius: 10px;
     padding-right: 70px;
 }
-button {
+button,
+span {
     position: absolute;
     width: 32px;
     height: 32px;
@@ -45,7 +46,8 @@ button {
     stroke: lightgray;
     transition: all 0.3s ease-in-out;
 }
-button:hover {
+button:hover,
+span:hover {
     scale: 1.1;
     stroke: black;
 }
