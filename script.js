@@ -14,7 +14,10 @@ const input = document.createElement('input');
 input.type = 'search';
 input.autofocus = true;
 input.autocomplete = false;
-input.placeholder = 'choose image category...'
+input.placeholder = 'choose image category...';
+input.addEventListener('input', (e) => {
+    e.target.value === '' ? buttonCleare.style.display = 'none': buttonCleare.style.display = 'flex';
+});
 const buttonSearch = document.createElement('button');
 buttonSearch.className = 'searchBtn'
 buttonSearch.type = 'submit';
@@ -29,7 +32,7 @@ buttonCleare.addEventListener('click', e => {
     input.value !== '' && render && fetchRandom();
     input.value = '';
     render = false;
-})
+});
 input.append(buttonSearch);
 searchBlock.addEventListener('submit', e => {
     e.preventDefault();
