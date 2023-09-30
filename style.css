@@ -67,6 +67,7 @@ span:hover {
     margin: 50px 20px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    height: 70vh;
 }
 .imageContainer {
     overflow: hidden;
@@ -119,7 +120,7 @@ a:hover {
     width: 40px;
     height: 40px;
     position: absolute;
-    top: 15%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }

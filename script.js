@@ -1,4 +1,4 @@
-let spinner = false;
+let spinner = true;
 let page = 1;
 let render = false;
 const apiKey = 'Ps0UKzTKZQbNZI8fCPltSBO5ct9U-svvBmxzQX7BDZ4';
